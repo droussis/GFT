@@ -103,6 +103,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m verl.trainer.main_ppo \
     actor_rollout_ref.ref.fsdp_config.param_offload=False \
     actor_rollout_ref.rollout.gpu_memory_utilization=$gpu_memory_utilization \
     algorithm.use_kl_in_reward=False \
+    actor_rollout_ref.actor.policy_loss.loss_mode=gft \
     +actor_rollout_ref.actor.policy_loss.tao=$gft_loss_tao \
     custom_reward_function.path=./verl/utils/reward_score/NuminaMath.py \
     custom_reward_function.name=compute_score \

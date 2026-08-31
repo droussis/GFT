@@ -535,7 +535,9 @@ class DataParallelPPOActor(BasePPOActor):
                     ) # 这里是获取到当前策略对于rollout这批数据的log_prob
                     # breakpoint()
                     loss_mode = self.config.policy_loss.get("loss_mode", "vanilla")
-                    loss_mode = 'gft'
+                    # loss_mode = 'gft'  # upstream hardcode: clobbered the config value and made
+                    # the vanilla/raft/raft_scale/sft branches below dead code. Select GFT with
+                    # actor_rollout_ref.actor.policy_loss.loss_mode=gft instead.
                     tao = self.config.policy_loss.tao
 
                     if loss_mode == "vanilla":
